@@ -6,8 +6,17 @@ using System.Text;
 
 namespace HashMap
 {
+    class HashMapNode<TKey, TValue>
+    {
+        TKey Key;
+        TValue Value;
+        HashMapNode<TKey, TValue> Next;
+    }
+
     class HashMap<TKey, TValue> : IDictionary<TKey, TValue>
     {
+        HashMapNode<TKey, TValue>[] buckets;
+
         public HashMap()
         {
             TKey key = default;
@@ -27,7 +36,7 @@ namespace HashMap
 
         public void Add(TKey key, TValue value)
         {
-            throw new NotImplementedException();
+            Add(KeyValuePair.Create(key, value));
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)
